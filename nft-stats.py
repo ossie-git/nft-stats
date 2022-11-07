@@ -39,7 +39,7 @@ def run_command(args):
         command = f"nft list chain filter {args.chain}"
     if args.debug:
         print(f"## Command used : {command}")
-    nft_run = subprocess.run(command, shell=True, capture_output=True)
+    nft_run = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     res = nft_run.stdout.decode().split('\n')
     if args.debug:
         print("## OUTPUT :")
